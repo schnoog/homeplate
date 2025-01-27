@@ -1,28 +1,4 @@
-<?php
-/* Smarty version 5.4.3, created on 2025-01-26 20:33:28
-  from 'file:test.tpl' */
-
-/* @var \Smarty\Template $_smarty_tpl */
-if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
-  'version' => '5.4.3',
-  'unifunc' => 'content_67969c18444119_78927835',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '84e0f69f3ef262cbf69dcf7f85a7e8eea69efe3e' => 
-    array (
-      0 => 'test.tpl',
-      1 => 1737923504,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-))) {
-function content_67969c18444119_78927835 (\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/var/www/html/smarty/templates';
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -32,10 +8,8 @@ $_smarty_current_dir = '/var/www/html/smarty/templates';
         <title>Grayscale - Start Bootstrap Theme</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
-<!--        <?php echo '<script'; ?>
- src="js/all.js" crossorigin="anonymous"><?php echo '</script'; ?>
->-->
-        <link href="assets/css/fontawesome.css" rel="stylesheet">
+<!--        <script src="js/all.js" crossorigin="anonymous"></script>-->
+        <link href="assets/css/all.css" rel="stylesheet">
         <!-- Google fonts-->
         <link href="css/mycss.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -55,11 +29,15 @@ $_smarty_current_dir = '/var/www/html/smarty/templates';
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                        {if $CFG.session.loggedin}
+                                <li class="nav-item"><a class="nav-link" href="#signup">HI</a></li>
+                        {/if}
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
+        <!--
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
@@ -71,9 +49,32 @@ $_smarty_current_dir = '/var/www/html/smarty/templates';
                 </div>
             </div>
         </header>
+       -->
+
+       <!-- Projects-->
+        <section class="projects-section bg-light" id="projects">
+            <div class="container px-4 px-lg-5">
+                <!-- Featured Project Row-->
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                {$dump}
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            <h4>Shoreline</h4>
+                            <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
         <!-- About-->
         <section class="about-section text-center" id="about">
             <div class="container px-4 px-lg-5">
+            
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
                         <h2 class="text-white mb-4">Built with Bootstrap 5</h2>
@@ -187,14 +188,9 @@ $_smarty_current_dir = '/var/www/html/smarty/templates';
         <!-- Footer-->
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
         <!-- Bootstrap core JS-->
-        <?php echo '<script'; ?>
- src="js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
->
+        <script src="js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <?php echo '<script'; ?>
- src="js/scripts.js"><?php echo '</script'; ?>
->
+        <script src="js/scripts.js"></script>
 
     </body>
-</html><?php }
-}
+</html>

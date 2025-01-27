@@ -1,15 +1,5 @@
 <?php
 
-$CFG['dir']['basedir'] = __DIR__ ;
-
-$CFG['dir']['smarty']['base'] = __DIR__ . "/smarty/";
-
-
-$CFG['dir']['smarty']['cache'] = $CFG['dir']['smarty']['base'] . "cache/";
-
-$CFG['dir']['smarty']['config'] = $CFG['dir']['smarty']['base'] . "config/";
-$CFG['dir']['smarty']['templates'] = $CFG['dir']['smarty']['base'] . "templates/";
-$CFG['dir']['smarty']['templates_compile'] = $CFG['dir']['smarty']['base'] . "templates_c/";
 
 $CFG['db']['dsn'] = 'mysql:host=localhost;dbname=homeplate';
 $CFG['db']['user'] = 'heimnetz';
@@ -21,7 +11,6 @@ $CFG['certs']['allowedSerials'] = [
 
 ];
 
-$CFG['session']['loggedin'] = false;
 
 
 

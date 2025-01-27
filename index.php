@@ -33,7 +33,19 @@ if($CFG['session']['loggedin'] == true){
 
 }
 
+//GetTags();
+//GetNodeTags();
+//GetNodes();
+GetHosts();
 
+$dump = $CFG['data'];
+
+
+$data = $CFG['data'];
+
+$smarty->assign('data',$data);
+$smarty->assign('dump', '<pre>' . print_r([$dump],true)."</pre>");
+$smarty->assign('CFG',$CFG);
 $smarty->assign('name', 'Ned');
 $smarty->display('test.tpl');
 
