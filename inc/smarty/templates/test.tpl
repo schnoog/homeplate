@@ -8,12 +8,12 @@
         <title>Grayscale - Start Bootstrap Theme</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
-<!--        <script src="js/all.js" crossorigin="anonymous"></script>-->
+<!--        <script src="assets/js/all.js" crossorigin="anonymous"></script>-->
         <link href="assets/css/all.css" rel="stylesheet">
         <!-- Google fonts-->
-        <link href="css/mycss.css" rel="stylesheet" />
+        <link href="assets/css/mycss.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="assets/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -188,9 +188,9 @@
         <!-- Footer-->
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
         <!-- Bootstrap core JS-->
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="assets/js/scripts.js"></script>
 
     </body>
 </html>

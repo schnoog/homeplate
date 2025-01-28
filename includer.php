@@ -1,11 +1,14 @@
 <?php
 
 
-require_once(__DIR__ ."/config.php");
-require_once(__DIR__ ."/vendor/autoload.php");
+require_once($CFG['dir']['basedir'] ."/config.php");
+require_once($CFG['dir']['basedir'] ."/vendor/autoload.php");
+
+DB::$dsn = $CFG['db']['dsn'];
+DB::$user = $CFG['db']['user'];
+DB::$password = $CFG['db']['password'];
 
 
-$CFG['dir']['basedir'] = __DIR__ ;
 $CFG['dir']['incdir'] = $CFG['dir']['basedir'] . "/inc/";
 $CFG['dir']['smarty']['base'] = $CFG['dir']['incdir']  . "smarty/";
 $CFG['dir']['smarty']['cache'] = $CFG['dir']['smarty']['base'] . "cache/";

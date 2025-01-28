@@ -8,12 +8,10 @@
  * 
  * 
  */
-require_once(__DIR__ ."/includer.php");
+$CFG['dir']['basedir'] = __DIR__ ;
+require_once($CFG['dir']['basedir'] ."/includer.php");
 
 
-DB::$dsn = $CFG['db']['dsn'];
-DB::$user = $CFG['db']['user'];
-DB::$password = $CFG['db']['password'];
 
 
 $serial ="x";
