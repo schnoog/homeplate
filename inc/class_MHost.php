@@ -9,6 +9,8 @@ class MHost {
     public string $ipv6 = "";
     public bool $alarming = false;
 
+
+
     public int $id = 0;
 
     // SSH
@@ -20,6 +22,7 @@ class MHost {
     // STATE
     public bool $host_state;
 
+    public bool $host_active;
     public string $info = "";
 
 

@@ -56,8 +56,32 @@
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                {$dump}
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div>
+
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." />
+                    {$online = '<i class="fa-regular fa-circle-check" style="color:green"></i>'}
+                    {$offline = '<i class="fa-regular fa-circle-xmark" style="color:red"></i>'}
+
+                    
+                    <ul class="list-group">
+                    {foreach $data.hosts as $id=>$host}
+                        {if $host.host_active == 1 or $host.host_state == 1}
+                        {if $host.host_name == $host.host_ipv4}
+                            {$label = ""}
+                        {else}
+                            {$label = " ({$host.host_ipv4})" }
+                        {/if}
+
+
+
+                    <li class="list-group-item">{if $host.host_state == 1}{$online}{else}{$offline}{/if}{$host.host_name}{$label}</li>
+                        {/if}
+                    {/foreach}
+                    </ul>
+                    
+                    
+                {$dump}                    
+                    
+                    </div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
                             <h4>Shoreline</h4>

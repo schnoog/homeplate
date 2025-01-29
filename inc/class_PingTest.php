@@ -5,7 +5,7 @@
 
 class PingTest extends MTest {
 
-    public $timeout = 0.51;
+    public $timeout = 1.51;
     public  $ips = array();
     public $spool = array();
 

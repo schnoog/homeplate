@@ -9,18 +9,18 @@ $SCN = [];
 
 
 //print_r($CFG);
-//GetScanHosts();
+GetScanHosts();
 
-//print_r($HST);
+//
 PingTestPerform();
-
-
 print_r($HST);
+
 
 
 
 function GetScanHosts(){
     global $HST;
+    $HST=[];
     $qry = 'Select * from homehost ORDER BY INET_ATON(host_ipv4)';
     $all = DB::query($qry);
 
@@ -29,9 +29,10 @@ function GetScanHosts(){
 
         $tmp = new MHost();
         $tmp->label = $rec['host_name'];
-        $tmp->hostname = $rec['host_hostname'];
-        $tmp->ipv4 = $rec['host_ipv4'];
-        $tmp->ipv6 = $rec['host_ipv4'];
+        if($rec['host_hostname'])$tmp->hostname = $rec['host_hostname'];
+        if($rec['host_ipv4'])$tmp->ipv4 = $rec['host_ipv4'];
+        if($rec['host_ipv6'])$tmp->ipv6 = $rec['host_ipv6'];
+        $tmp->host_active = $rec['host_active'];
         $tmp->id = $rec['id'];        
         $hs = false;
         if($rec['host_state'] == 1) $hs = true;
@@ -54,9 +55,9 @@ function UpdateNewStates($newOn,$newOff){
 }
 
 
-function PingTestPerform(){
+function PingTestPerform($dbupdate = true){
     global $SCN , $HST;
-    if(count($HST) < 1) GetScanHosts();
+    //if(count($HST) < 1) GetScanHosts();
     $SCN['ping'] = new PingTest();
     foreach ($HST as $pinghost){
         $SCN['ping']->AddHost($pinghost);
@@ -84,7 +85,7 @@ function PingTestPerform(){
     
         }
     }
-    UpdateNewStates($newOn,$newOff);
+    if($dbupdate)    UpdateNewStates($newOn,$newOff);
 
 
 
