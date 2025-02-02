@@ -1,9 +1,15 @@
 #!/bin/bash
 
 
-php /var/www/html/scan/scanner.php > /dev/null
+/usr/bin/php /var/www/html/scan/scanner.php > /dev/shm/lastscan
 
-sleep 28
+sleep 25
 
-php /var/www/html/scan/scanner.php > /dev/null
+/usr/bin/php /var/www/html/scan/scanner.php > /dev/shm/lastscan
+
+
+#sleep 28
+
+
+#php /var/www/html/scan/scanner.php > /dev/null
 

@@ -28,7 +28,9 @@ if(isset($_SESSION)){
 
 }
 
-
+if($CFG['session']['loggedin'] != true){
+    header('Loction: index.php');
+}
 
 if($CFG['session']['loggedin'] == true){
    // echo "<pre>" . print_r($_SERVER,true) . "</pre>";
@@ -36,45 +38,36 @@ if($CFG['session']['loggedin'] == true){
 
 
 }
+
 $SECCODE = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['HTTP_COOKIE']);
 
-//GetTags();
-//GetNodeTags();
-//GetNodes();
+GetSets();
 
-/**
- * Homenet -Ping -Test
- */
+$template = "set.tpl";
+$sectiononly = false;
+if(isset($_POST['section'])) {
+    $sectiononly = true;
+    if($_POST['section'] == "icons") $template = "z_icontable.tpl";
 
-//start - Load hosts from table
-GetHosts();
-GetIconSet();
+    if($_POST['section'] == "tags") $template = "z_tagtable.tpl";
 
-
-
-//sort hosts for display acc, to the IPv4 address
-$CFG['data']['lastscan'] = getFileAgeInSeconds("/dev/shm/lastscan");
-$data = sortHostsByIPv4($CFG['data']);
+    if($_POST['section'] == "groups") $template = "z_tagtable.tpl";
+}
 
 
-//Get fullhosts
-$dump = GetFullHostDataset();
-
-$fullhostdata = $CFG['fullhostdata'];
 
 
-$dump = $CFG['data'];
-//$dump = [];
-    $filepath = $CFG['dir']['incdir'] . $file;
-$smarty->assign("basedata",$CFG['basedata'] );
+
+
+
+$dump = print_r($_SERVER,true);
+$filepath = $CFG['dir']['incdir'] . $file;
+$smarty->assign('sectiononly',$sectiononly);
 $smarty->assign('seccode',$SECCODE);
-$smarty->assign('now',time());
-$smarty->assign('data',$data);
-$smarty->assign('fullhostdata',$fullhostdata);
-$smarty->assign('badgecolos',$CFG['badgecolors']);
-$smarty->assign('dump', '<pre>' . print_r([$_SESSION,$CFG['basedata'],$fullhostdata,$dump],true)."</pre>");
+$smarty->assign('dump',$dump);
+$smarty->assign('SET',$CFG['set']);
 $smarty->assign('CFG',$CFG);
 $smarty->assign('name', 'Ned');
-$smarty->display('index.tpl');
+$smarty->display('set.tpl');
 
 

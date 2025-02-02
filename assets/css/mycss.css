@@ -1,3 +1,70 @@
+.mbtn {
+  margin-bottom: 10px; /* Adjust the value as needed */
+  width: 90%;
+}
+
+
+.text-bg-grp1 {
+  color: #ffebcd !important;  /* Blanched Almond */
+  background-color: RGBA(47, 79, 79, var(--bs-bg-opacity, 1)) !important; /* Dark Slate Gray */
+}
+
+.text-bg-grp2 {
+  color: #1a1a1a !important;  /* Almost Black */
+  background-color: RGBA(255, 215, 0, var(--bs-bg-opacity, 1)) !important; /* Gold */
+}
+
+.text-bg-grp3 {
+  color: #e0ffff !important;  /* Light Cyan */
+  background-color: RGBA(128, 0, 128, var(--bs-bg-opacity, 1)) !important; /* Purple */
+}
+
+.text-bg-grp4 {
+  color: #ffdab9 !important;  /* Peach Puff */
+  background-color: RGBA(25, 25, 112, var(--bs-bg-opacity, 1)) !important; /* Midnight Blue */
+}
+
+.text-bg-grp5 {
+  color: #f8f9fa !important;  /* Soft White */
+  background-color: RGBA(139, 0, 0, var(--bs-bg-opacity, 1)) !important; /* Dark Red */
+}
+
+.text-bg-grp6 {
+  color: #222222 !important;  /* Deep Gray */
+  background-color: RGBA(240, 128, 128, var(--bs-bg-opacity, 1)) !important; /* Light Coral */
+}
+
+.text-bg-grp7 {
+  color: #fffacd !important;  /* Lemon Chiffon */
+  background-color: RGBA(70, 130, 180, var(--bs-bg-opacity, 1)) !important; /* Steel Blue */
+}
+
+.text-bg-grp8 {
+  color: #191970 !important;  /* Midnight Blue */
+  background-color: RGBA(255, 165, 0, var(--bs-bg-opacity, 1)) !important; /* Orange */
+}
+
+.text-bg-grp9 {
+  color: #ffe4e1 !important;  /* Misty Rose */
+  background-color: RGBA(0, 100, 0, var(--bs-bg-opacity, 1)) !important; /* Dark Green */
+}
+
+.text-bg-grp10 {
+  color: #282828 !important;  /* Charcoal Gray */
+  background-color: RGBA(176, 224, 230, var(--bs-bg-opacity, 1)) !important; /* Powder Blue */
+}
+
+
+
+
+.login {
+  margin-bottom:5px;
+}
+.dropdown-menu {
+  width: 300px !important;
+}
+
+
 /* nunito-200 - latin */
 @font-face {
     font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -80,3 +147,6 @@
     src: url('../fonts/varela-round-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
   
+
+
+

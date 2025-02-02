@@ -11,15 +11,31 @@
 <!--        <script src="assets/js/all.js" crossorigin="anonymous"></script>-->
         <link href="assets/css/all.css" rel="stylesheet">
         <!-- Google fonts-->
-
+        <link href="assets/css/mycss.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="assets/css/styles.css" rel="stylesheet" />
-        <link href="assets/css/mycss.css?t={$now}" rel="stylesheet" />        
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        {include file='nav.tpl'}      
-
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                        {if $CFG.session.loggedin}
+                                <li class="nav-item"><a class="nav-link" href="#signup">HI</a></li>
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <!-- Masthead-->
         <!--
         <header class="masthead">
@@ -39,68 +55,24 @@
         <section class="projects-section bg-light" id="projects">
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-top">
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
 
-                    <div class="col-xl-8 col-lg-7">
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." />
 
-                    {$mcnt = count($badgecolos) -1}
-                    {$bci = 0}
-                    <button type="button" class="badge text-bg-dark" onclick="filterButtons('');">
-                        <h4><span class="badge text-bg-dark">All</span></h4>
-                    </button>                    
-                    {foreach $fullhostdata.taglist as $tag}
-                            <button type="button" class="badge text-bg-dark" onclick="filterButtons('{$tag}');">
-                                <h4><span class="badge text-bg-dark">{$tag}</span></h4>
-                            </button>
-                    {/foreach}
-                    <hr>
-                    <button type="button" class="badge text-bg-dark" onclick="filterButtonsByClass('');">
-                        <h4><span class="badge text-bg-dark">All</span></h4>
-                    </button>                     
-                    {foreach $fullhostdata.grouplist as $id=>$group}
-                    {$tg = "text-bg-grp{$id}"}
-                        <button type="button" class="badge {$tg}" onclick="filterButtonsByClass('{$group}');">
-                            <h3><span class="badge {$tg}">{$group}</span></h3>
-                        </button>
-                    {/foreach}                    
-                    <hr>
+                    
+                    
 
 
 
 
-                    {foreach $fullhostdata.fullhosts as $host}
-                        <button type="button" class="btn mbtn badge text-bg-info {$host.hostgroup}" alt="{$host.host_url}" 
-                        title="Open {$host.host_url}" onclick='openNewTab("{$host.host_url}");' tags="{$host.tags}"  style="display: flex; align-items: right; text-align: left;">
-                        <img src="assets/img/icons/{$basedata.iconset[$host.host_icon]}" height="60px" style="margin-right: 10px;">
-                        <div>
-                        <h5>{$host.host_name}</h5>
-                            <div>
-                            {foreach $host.tag as $tag}
-                                
-
-                                <span class="badge text-bg-dark">{$tag}</span>
-                            {/foreach}
-
-                            <span class="badge text-bg-secondary">{$host.hostgroup}</span>
-                            </div>
-                        </div>
-                        </button>
-
-                    {/foreach}
-
-
-
-
-
-                                
+                        <h1>DUMP</h1>
+                        {$dump}      
+                        </hr>                                  
                     </div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
                                     {$online = '<i class="fa-regular fa-circle-check" style="color:green"></i>'}
                                     {$offline = '<i class="fa-regular fa-circle-xmark" style="color:red"></i>'}
-
-
-
 
                                     <div id="pinglist">
                                     <h4>Last update {$data.lastscan} second{if $data.lastscan > 1}s{/if} ago</h4>                                    
@@ -130,19 +102,7 @@
 
 
 
-        <!-- Contact-->
-        <section class="contact-section bg-yellow">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
 
-                        <h1>DUMP</h1>
-                        {$dump}      
-                        </hr>          
-
-
-                </div>
-            </div>        
-        </section>
 
         <!-- Contact-->
         <section class="contact-section bg-black">
@@ -191,7 +151,6 @@
         <!-- Bootstrap core JS-->
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        {include file='js.tpl'}        
         <script src="assets/js/scripts.js"></script>
 
     </body>

@@ -13,7 +13,7 @@ require_once($CFG['dir']['basedir'] ."/includer.php");
 
 
 
-session_start();
+
 $serial ="x";
 if (isset($_SERVER['SSL_CLIENT_M_SERIAL'])) $serial = $_SERVER['SSL_CLIENT_M_SERIAL'];
 $serial ="1234";
@@ -28,7 +28,7 @@ if(isset($_SESSION)){
 
 }
 
-
+session_start();
 
 if($CFG['session']['loggedin'] == true){
    // echo "<pre>" . print_r($_SERVER,true) . "</pre>";
@@ -36,38 +36,34 @@ if($CFG['session']['loggedin'] == true){
 
 
 }
-$SECCODE = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['HTTP_COOKIE']);
-
-//GetTags();
-//GetNodeTags();
-//GetNodes();
-
-/**
- * Homenet -Ping -Test
- */
-
-//start - Load hosts from table
-GetHosts();
-GetIconSet();
 
 
+$msg = "please enter your username / password";
+if(isset($_POST['username'])){
+    $un = $_POST['username'];
+    if(isset($_POST['password'])){
+        $pw = $_POST['password'];
+        if(LoginUserByName($un,$pw)){
+            $msg = "logged in";
+            header('Location: /index.php');
+            exit;
 
-//sort hosts for display acc, to the IPv4 address
-$CFG['data']['lastscan'] = getFileAgeInSeconds("/dev/shm/lastscan");
-$data = sortHostsByIPv4($CFG['data']);
+
+        }else{
+            $msg ="Wrong login credentials";
+        }
+
+    }
 
 
-//Get fullhosts
-$dump = GetFullHostDataset();
-
-$fullhostdata = $CFG['fullhostdata'];
+}
 
 
-$dump = $CFG['data'];
-//$dump = [];
-    $filepath = $CFG['dir']['incdir'] . $file;
-$smarty->assign("basedata",$CFG['basedata'] );
-$smarty->assign('seccode',$SECCODE);
+
+$smarty->assign('msg',$msg);
+
+$filepath = $CFG['dir']['incdir'] . $file;
+
 $smarty->assign('now',time());
 $smarty->assign('data',$data);
 $smarty->assign('fullhostdata',$fullhostdata);
@@ -75,6 +71,6 @@ $smarty->assign('badgecolos',$CFG['badgecolors']);
 $smarty->assign('dump', '<pre>' . print_r([$_SESSION,$CFG['basedata'],$fullhostdata,$dump],true)."</pre>");
 $smarty->assign('CFG',$CFG);
 $smarty->assign('name', 'Ned');
-$smarty->display('index.tpl');
+$smarty->display('login.tpl');
 
 

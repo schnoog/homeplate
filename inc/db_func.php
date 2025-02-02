@@ -93,3 +93,18 @@ function GetNodes(){
 
 
 }
+
+
+
+function GetIconSet(){
+    global $CFG;
+    $data = [];
+    $res = DB::query("Select * from icon");
+    for($x=0;$x < count($res);$x++){
+        $line  = $res[$x];
+        $data[$line['id']] =  $line['icon'];
+    }
+
+    $CFG['basedata']['iconset'] = $data;
+    return $data;
+}
