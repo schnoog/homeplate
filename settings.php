@@ -29,7 +29,8 @@ if(isset($_SESSION)){
 }
 
 if($CFG['session']['loggedin'] != true){
-    header('Loction: index.php');
+    header('Location: index.php');
+    exit;
 }
 
 if($CFG['session']['loggedin'] == true){
@@ -42,6 +43,8 @@ if($CFG['session']['loggedin'] == true){
 $SECCODE = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['HTTP_COOKIE']);
 
 GetSets();
+IconPool();
+
 
 $template = "set.tpl";
 $sectiononly = false;

@@ -18,24 +18,22 @@
        <!-- Projects-->
         <section class="projects-section bg-light" id="projects">
 
-        <center><h1>Settings</h1>
-        
-        <h3>{$seccode}</h3>
+        <center><h3>Settings</h3>
         </center>
-        <div class="row align-items-center">
-            <div class="col-sm-4 align-self-center">
+        <div class="row align-top">
+            <div class="col-sm-4 align-top">
             <center>
             {include file='z_grouptable.tpl'} 
 
             </center>
             </div>
-            <div class="col-sm-4 align-self-center">
+            <div class="col-sm-4 align-top">
             <center>
             {include file='z_tagtable.tpl'} 
          
             </center>
             </div>
-            <div class="col-sm-4 align-self-center">
+            <div class="col-sm-4 align-top">
             <center>
             {include file='z_icontable.tpl'} 
 
@@ -44,27 +42,27 @@
 
         </div>
 
-        <pre>{$dump}</pre>
+    
 
         </section>
 
 
 
         <!-- Contact-->
-        {if $CFG.session.loggedin}
+
         <section class="contact-section bg-yellow">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">
+                {foreach $SET.imageset as $IMG }
+                    {$IMG}<br>
 
-                        <h1>DUMP</h1>
-                        {$dump}      
-                        </hr>          
+                {/foreach}
 
 
                 </div>
             </div>        
         </section>
-        {/if}
+
 
 
 {include file='foot.tpl'}        

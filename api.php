@@ -16,26 +16,122 @@ require_once($CFG['dir']['basedir'] ."/includer.php");
 session_start();
 
 $SECCODE = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['HTTP_COOKIE']);
-$seccode = $_POST['seccode'];
+$seccode = $_REQUEST['seccode'];
 
 if($SECCODE != $seccode) die ("Sorry, security codes don't match");
 
 
+
 $template = "set.tpl";
 $sectiononly = false;
-if(isset($_POST['section'])) {
+
+$action = "";
+if(isset($_REQUEST['action'])){
+    $action = $_REQUEST['action'];
+} 
+$debug="";
+if(isset($_REQUEST['section'])) {
     $sectiononly = true;
-    if($_POST['section'] == "icons") $template = "z_icontable.tpl";
+    /**
+     * ICONS
+     */
+    if($_REQUEST['section'] == "icons") {
+        $template = "z_icontable.tpl";
+        if(strlen($action)> 0){
 
-    if($_POST['section'] == "tags") $template = "z_tagtable.tpl";
 
-    if($_POST['section'] == "groups") $template = "z_tagtable.tpl";
+            $debug = "<pre>" . print_r($_REQUEST,true) . "</pre>";
+            $debug = "";
+            if($action == "add"){
+                $newval = $_REQUEST['newval'];
+                if(strlen($newval)> 0){
+                    DB::query("INSERT INTO icon (icon) VALUES (%s)",$newval);
+                }
+
+            }
+            if($action == "update"){
+                $id = $_REQUEST['id'];                
+                $newval = $_REQUEST['newval'];
+                if(strlen($newval)> 0){
+                    DB::query("Update icon set icon = %s WHERE id = %i",$newval,$id);
+                }
+
+
+            }
+            if($action == "delete"){
+                $id = $_REQUEST['id'];
+                DB::query("Delete from icon WHERE id = %i",$id);
+            }
+
+
+
+        }
+    }
+    /**
+     * TAGS
+     */
+    if($_REQUEST['section'] == "tags") {
+        $template = "z_tagtable.tpl";
+        if(strlen($action)> 0){
+            $debug = "<pre>" . print_r($_REQUEST,true) . "</pre>";
+            $debug = "";
+            if($action == "add"){
+                $newval = $_REQUEST['newval'];
+                if(strlen($newval)> 0){
+                    DB::query("INSERT INTO tag (tag) VALUES (%s)",$newval);
+                }
+            }
+            if($action == "update"){
+                $id = $_REQUEST['id'];
+                $newval = $_REQUEST['newval'];
+                if(strlen($newval)> 0){
+                    DB::query("Update tag set tag = %s WHERE id = %i",$newval,$id);                    
+                }
+            }
+            if($action == "delete"){
+                $id = $_REQUEST['id'];
+                DB::query("Delete from tag WHERE id = %i",$id);
+            }
+
+        }
+
+    }
+    /**
+     * GROUPS
+     */
+    if($_REQUEST['section'] == "groups") {
+        $template = "z_grouptable.tpl";
+        if(strlen($action)> 0){
+            $debug = "<pre>" . print_r($_REQUEST,true) . "</pre>";
+            $debug ="";
+            if($action == "add"){
+                $newval = $_REQUEST['newval'];
+                if(strlen($newval)> 0){
+                    DB::query("INSERT INTO fullgroup (hostgroup) VALUES (%s)",$newval);
+                }
+            }
+            if($action == "update"){
+                $id = $_REQUEST['id'];
+                $newval = $_REQUEST['newval'];
+                if(strlen($newval)> 0){
+                    DB::query("Update fullgroup set hostgroup = %s WHERE id = %i",$newval,$id);
+                }
+            }
+            if($action == "delete"){
+                $id = $_REQUEST['id'];
+                DB::query("Delete from fullgroup WHERE id = %i",$id);
+            }
+
+        }
+
+    }
+   // GetSets();
 }
 
+GetSets();
 
 
-
-
+$smarty->assign("debugme",$debug);
 
 
 $dump = print_r($POST,true);

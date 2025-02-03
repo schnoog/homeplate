@@ -18,7 +18,9 @@ error_reporting(E_ALL);
 session_start();
 //sort hosts for display acc, to the IPv4 address
 
-print_r($_SESSION);
+$tmp = IconPool();
+
+print_r($tmp);
 
 /*
 //$dump = $CFG['data'];
