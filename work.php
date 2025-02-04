@@ -18,8 +18,8 @@ error_reporting(E_ALL);
 session_start();
 //sort hosts for display acc, to the IPv4 address
 
-$tmp = IconPool();
-
+$tmp = NewIcons();
+echo phpinfo();
 print_r($tmp);
 
 /*

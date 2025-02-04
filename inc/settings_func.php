@@ -45,7 +45,18 @@ return $pics;
 }
 
 
+function NewIcons(){
+    global $CFG;
+    $res = DB::queryFirstColumn('select icon from icon;');
+    $pool = IconPool();
+    $tmp = array_diff($pool,$res);
+    $CFG['set']['newimages'] = $tmp;
 
+    return $tmp;
+
+
+
+}
 
 
 

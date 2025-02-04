@@ -43,7 +43,7 @@ if($CFG['session']['loggedin'] == true){
 $SECCODE = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['HTTP_COOKIE']);
 
 GetSets();
-IconPool();
+NewIcons();
 
 
 $template = "set.tpl";

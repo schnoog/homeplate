@@ -62,6 +62,10 @@ if(isset($_REQUEST['section'])) {
                 $id = $_REQUEST['id'];
                 DB::query("Delete from icon WHERE id = %i",$id);
             }
+            if($action == "addicon"){
+                $icon = $_REQUEST['icon'];
+                DB::query("INSERT INTO icon (icon) VALUES (%s)",$icon);
+            }
 
 
 

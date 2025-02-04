@@ -53,12 +53,46 @@
         <section class="contact-section bg-yellow">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">
-                {foreach $SET.imageset as $IMG }
-                    {$IMG}<br>
 
-                {/foreach}
+                <div class="col-sm-4 align-top">
+
+                <form id="fileupload_form" class="form-horizontal">
+                        
+                    <div class="form-group">
+                    <label class="col-sm-3 control-label">Select File</label>
+                    <div class="col-sm-6">
+                    <input type="file" id="myfile" class="form-control"/>
+                    </div>
+                    </div>
+                                
+                    <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6 m-t-15">
+                    <input type="button" onclick="saveFile();" value="Upload" class="btn btn-success btn-lg btn-block"> 
+                    </div>
+                    </div>
+                            
+                </form>
+
+                </div>
+                    <div class="col-sm-8 align-top">
+
+                    <h3>Unassigned icons</h3>
+                        <table border='1'>
+ 
 
 
+                        <tr style="height: 80px;">
+                        
+                        {foreach $SET.newimages as $IMG }
+                            <td style="height: 80px;"> 
+                            <button type="button" class="btn btn-success p-3" onclick="assignIcon('{$IMG}');" >Assign</button> 
+                            <img src="assets/img/icons/{$IMG}" height='90%'><br>
+                            {$IMG}
+                            </td>
+                        {/foreach}
+                        </tr>
+                        </table>
+                    </div>
                 </div>
             </div>        
         </section>

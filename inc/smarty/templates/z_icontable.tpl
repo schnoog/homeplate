@@ -3,7 +3,7 @@
                 <tr><th>id</th><th>Icon</th><th>Pic</th><th></th><th>
                 
                 
-                <button type="button" class="btn btn-success p-3" onclick="addTableItem('icons','icontable');">Add new</button>                   
+                <button type="button" class="btn btn-success p-3" onclick="addTableItem('icons','icontable');" disabled>Add new</button>                   
                 
                 </th></tr>
                 {foreach $SET.icons as $ROW}

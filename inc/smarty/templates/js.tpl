@@ -284,6 +284,120 @@ function filterButtonsByClass(filterclass) {
     }
 
 
+    
+
+
+
+    async function assignIcon(newimage) {
+        try {
+            // Prepare the POST request payload
+            const formData = new FormData();
+            formData.append("seccode", "{/literal}{$seccode}{literal}");
+            formData.append("section", 'icons');
+            formData.append("icon", newimage);
+            formData.append("action", "addicon");
+
+
+     
+            
+
+
+            // Send the POST request to api.php
+            const response = await fetch("api.php", {
+                method: "POST",
+                body: formData
+            });
+    
+            // Check if the response is successful
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            // Get the response text (assuming it's HTML content)
+            const data = await response.text();
+    
+            // Replace the content of the element with ID 'icontable'
+            const iconTable = document.getElementById('icontable');
+            if (iconTable) {
+                iconTable.innerHTML = data;
+            } else {
+                console.error("Element with ID 'icontable' not found.");
+            }
+        } catch (error) {
+            console.error("Error updating icon table:", error);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function saveFile()
+{	
+	var fl = document.getElementById("myfile").files;
+	
+	if(fl.length > 0)
+	{
+		var fd = new FormData();
+		
+		fd.append("file", fl[0]);
+
+		var xhr = new XMLHttpRequest();
+
+		xhr.open('POST', 'upload.php', true);
+		
+		xhr.send(fd);
+		
+		xhr.onreadystatechange = function()
+		{
+			if(xhr.readyState == 4 && xhr.status == 200)
+			{
+				var response = JSON.parse(xhr.responseText);
+				
+				document.getElementById('fileupload_form').reset();
+				
+				if(response.success)
+				{
+					document.getElementById('message_box').innerHTML = response.success;
+				}
+				else if(response.size_error)
+				{
+					document.getElementById('message_box').innerHTML = response.size_error;
+				}
+				else if(response.exists_error)
+				{
+					document.getElementById('message_box').innerHTML = response.exists_error;
+				}
+				else if(response.extension_error)
+				{
+					document.getElementById('message_box').innerHTML = response.extension_error;
+				}
+			}
+		};
+	}
+	else
+	{
+		alert('Please Select File !!');
+	}
+}
+
+
+
+
+
+
+
 
 
 

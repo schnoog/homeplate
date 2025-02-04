@@ -27,10 +27,13 @@ if (!in_array($serial,$CFG['certs']['allowedSerials'])){
 if(isset($_SESSION)){
     if(isset($_SESSION['loggedin'])) $CFG['session']['loggedin'] = true;
 
-}else{
+}
+
+if(!$CFG['session']['loggedin']){
+
     if (isset($_COOKIE['remember_me'])) {
         $token = $_COOKIE['remember_me'];
-        list($un,$check) = $explode("-",$token);
+        list($un,$check) = explode("-",$token);
         if(strlen($un)> 0){
             if(strlen($check)>20){
                 $tmp = GetUserSpecKey($un);
@@ -45,7 +48,9 @@ if(isset($_SESSION)){
         }
     }
 
+
 }
+
 
 //print_r($_COOKIE['remember_me']);
 //exit;
