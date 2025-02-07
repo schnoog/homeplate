@@ -15,9 +15,33 @@ function GetSets(){
 
     ];
 
+    for($x=0;$x < count($Groups);$x++){
+        $CFG['set']['groupsbyid'][$Groups[$x]['id'] ] = $Groups[$x]['hostgroup'];
+    }
+
+    for($x=0;$x < count($Tags);$x++){
+        $CFG['set']['tagsbyid'][$Tags[$x]['id'] ] = $Tags[$x]['tag'];
+    }
+
+    for($x=0;$x < count($Icons);$x++){
+        $CFG['set']['iconssbyid'][$Icons[$x]['id'] ] = $Icons[$x]['icon'];
+    }
+
+
     $CFG['set']['unused']['groups'] = DB::queryFirstColumn('SELECT t1.id from fullgroup t1 left join fullhost t2 on t1.id = t2.hostgroup WHERE t2.hostgroup IS NULL');
     $CFG['set']['unused']['tags'] = DB::queryFirstColumn('SELECT t1.id from tag t1 left join  fullhosttag  t2 on t1.id = t2.tagid WHERE t2.tagid IS NULL');
     $CFG['set']['unused']['icons'] = DB::queryFirstColumn('SELECT t1.id from icon t1 left join fullhost t2 on t1.id = t2.host_icon WHERE t2.host_icon IS NULL');
+    $CFG['set']['options']['yesno'] = [
+        0 => "No",
+        1 => "Yes"
+    ];
+    $CFG['set']['options']['activeinactive'] = [
+        0 => "Inactive",
+        1 => "Active"
+    ];
+
+
+
 
 }
 

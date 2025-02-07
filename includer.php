@@ -59,4 +59,4 @@ $smarty->setCompileDir($CFG['dir']['smarty']['templates_compile']);
 $smarty->setCacheDir($CFG['dir']['smarty']['cache']);
 $smarty->setConfigDir($CFG['dir']['smarty']['config']);
 $smarty->setCacheLifetime(1); // 1 second
-//$smarty->debugging = true;
+if(isset($_GET['debug'])) $smarty->debugging = true;

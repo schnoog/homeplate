@@ -14,7 +14,7 @@
                     <img src="assets/img/icons/{$ROW.icon}" height="20px" style="margin-right: 10px;">                    
                     </td>
                     <td>
-                        <button type="button" class="btn btn-secondary p-3" onclick="updateTableItem('icons','icontable','{$ROW.id}','{$ROW.icon}');">Edit</button> 
+                        <button type="button" class="btn btn-secondary p-3" onclick="updateTableItem('icons','icontable','{$ROW.id}','{$ROW.icon}');" disabled>Edit</button> 
                     </td><td>
                     {if in_array($ROW.id,$SET.unused.icons)}
                         <button type="button" class="btn btn-danger p-3" onclick="deleteTableItem('icons','icontable','{$ROW.id}');">Delete</button>                     

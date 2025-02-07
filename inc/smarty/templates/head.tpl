@@ -14,7 +14,11 @@
 
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="assets/css/styles.css" rel="stylesheet" />
-        <link href="assets/css/mycss.css?t={$now}" rel="stylesheet" />        
+        <link href="assets/css/mycss.css?t={$now}" rel="stylesheet" />  
+        <link href="assets/css/select2.min.css" rel="stylesheet" />
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/select2.min.js"></script>        
+        
     </head>
     <body id="page-top">
         <!-- Navigation-->

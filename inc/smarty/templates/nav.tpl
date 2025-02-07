@@ -13,7 +13,7 @@
 -->
                         {if $CFG.session.loggedin}
 
-
+                            <li class="nav-item"><a class="nav-link" href="hosts.php">Hosts</a></li>
                                 <li class="nav-item"><a class="nav-link" href="settings.php">Settings</a></li>
                                 <li class="nav-item"><a class="nav-link" href="icons.php">Projects</a></li>
                                 <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
