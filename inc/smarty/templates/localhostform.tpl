@@ -2,13 +2,13 @@
 
 <div class="container mt-5">
     <div class="col-md-6">
-    <form method="post" action="hosts.php"><button type="submit" class="btn btn-danger">Back to host list</button></form><br>
+    <form method="post" action="localnet.php"><button type="submit" class="btn btn-danger">Back to host list</button></form><br>
 
     </div>
     <div class="col-md-6">
     </div>
 
-
+    {$upd = true}
 <form method="post" class="row g-3">
     <div class="col-md-6">
 
@@ -23,7 +23,7 @@
 
     <div class="col-md-6">
         <label for="GRPID" class="form-label">Group</label>
-        {html_options id="GRPID" name="GRPID" options=$SET.groupsbyid selected=$ehost.GRPID}
+        {html_options id="GRPID" name="GRPID" options=$SET.lgroupsbyid selected=$ehost.GRPID}
 
     </div>
     <div class="col-md-6">
@@ -42,7 +42,7 @@
         <label for="host_ipv4" class="form-label">Host IPv4</label>
 
 
-<input type="text" name="host_ipv4" id="host_ipv4" {if $upd} value="{$ehost.host_ipv4}"{/if}   />
+<input type="text" name="host_ipv4" id="host_ipv4" {if $upd} value="{$ehost.host_ipv4}"{/if}  disabled  />
 
     </div>
     <div class="col-md-6">
@@ -59,18 +59,18 @@
 <input type="text" name="host_hostname" id="host_hostname" {if $upd} value="{$ehost.host_hostname}"{/if}   />
 
     </div>
+
+
+
+
+
+
+
     <div class="col-md-6">
-        <label for="host_url" class="form-label">Host URL</label>
+        <label for="host_active" class="form-label">Check URL</label>
 
 
-<input type="text" name="host_url" id="host_url" {if $upd} value="{$ehost.host_url}"{/if}   />
-
-    </div>
-    <div class="col-md-6">
-        <label for="host_checkurl" class="form-label">Check URL</label>
-
-
-    {html_options id="host_checkurl" name="host_checkurl" options=$SET.options.yesno selected=$ehost.host_checkurl}
+    {html_options id="host_active" name="host_active" options=$SET.options.yesno selected=$ehost.host_active}
 
     </div>
     <div class="col-md-6">
@@ -80,28 +80,20 @@
     {html_options id="host_state" name="host_state" options=$SET.options.activeinactive selected=$ehost.host_state}
 
     </div>
+
+
     <div class="col-md-6">
-        <label for="host_laststatechange" class="form-label">Last State Change</label>
+        <label for="host_alarmdeath" class="form-label">Host Alarming</label>
 
 
-<input type="text" name="host_laststatechange" id="host_laststatechange" {if $upd} value="{$ehost.host_laststatechange}"{/if}   />
-
-    </div>
-    <div class="col-md-6">
-        <label for="host_icon" class="form-label">Host Icon</label>
-
-
-    {html_options id="host_icon" class="form-control " name="host_icon" options=$SET.iconsbyid selected=$ehost.host_icon}
+    {html_options id="host_alarmdeath" name="host_alarmdeath" options=$SET.options.activeinactive selected=$ehost.host_alarmdeath}
 
     </div>
-    <div class="col-md-12">
-        <label for="tags" class="form-label">Tags</label>
-        {html_options id="tags" name="tags[]" class="js-tag-multiple form-control" options=$SET.tagsbyid selected=$ehost.tagarray  multiple="multiple"}
 
 
 
 
-    </div>
+
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

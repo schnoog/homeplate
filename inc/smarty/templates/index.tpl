@@ -101,7 +101,7 @@
                                     </ul>
                                     </div>
                             
-                            <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+                            <p class="text-black-50 mb-0"></p>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
 
 
         <!-- Contact-->
-        {if $CFG.session.loggedin}
+        {if $CFG.session.loggedinNowdeactivated}
         <section class="contact-section bg-yellow">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">

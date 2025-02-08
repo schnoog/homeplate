@@ -393,16 +393,12 @@ function filterButtonsByClass(filterclass) {
 }
 
 
+async function ChangeLocalnet(id,field){
 
 
 
 
-
-
-
-
-
-
+}
 
 
 

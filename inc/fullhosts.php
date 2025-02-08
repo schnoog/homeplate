@@ -175,3 +175,50 @@ function GetFullHostDataset(){
 
 
 
+/**
+ * 
+ * 
+ */
+
+
+ function saveLocalHost($data){
+    $host = [];
+    $tags = [];
+    
+    $host['id'] = $data['id'];
+    $host['host_name'] = $data['host_name'];
+    $host['hostgroup'] = $data['GRPID'];
+    $host['localonly'] = $data['localonly'];
+    $host['usedns'] = $data['usedns'];
+//    $host['host_checkurl'] = $data['host_checkurl'];
+    $host['host_state'] = $data['host_state'];
+    $host['host_active'] = $data['host_active'];
+    $host['host_alarmdeath'] = $data['host_alarmdeath'];
+    $host['hostgroup'] = $data['GRPID'];
+
+    if(strlen($data['host_ipv4']) > 0) $host['host_ipv4'] = $data['host_ipv4'];
+    if(strlen($data['host_ipv6']) > 0) $host['host_ipv6'] = $data['host_ipv6'];
+    if(strlen($data['host_hostname']) > 0) $host['host_hostname'] = $data['host_hostname'];
+//    if(strlen($data['host_url']) > 0) $host['host_url'] = $data['host_url'];
+    
+
+    //echo "<pre>" . print_r( [ "post" => $data , "host" => $host   ] ,true ) . "</pre>";
+    
+    DB::insertUpdate("homehost",$host);
+
+
+
+
+
+
+    /*
+
+    */
+
+
+
+
+
+
+
+};

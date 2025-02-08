@@ -24,11 +24,11 @@
                     <div class="col-xl-12 col-lg-12">
 
                     {if $CFG.hostlist.edit}
-                        {include file='hostform.tpl'}                         
+                        {include file='localhostform.tpl'}                         
                     
                     {else}
 
-                        {include file='hostlist.tpl'}  
+                        {include file='locallist.tpl'}  
 
                     {/if}
                                 

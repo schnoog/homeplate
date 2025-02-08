@@ -41,66 +41,73 @@ if($CFG['session']['loggedin'] == true){
 }
 
 $SECCODE = md5( $_SERVER['HTTP_USER_AGENT'] . $_SERVER['HTTP_COOKIE']);
-GetHosts();
-GetSets();
-NewIcons();
-GetIconSet();
-GetFullHostDataset();
 
 
-$template = "hosts.tpl";
-$refData = false;
-$CFG['hostlist']['edit'] = false;
 
-if(isset($_REQUEST['new'])){
-    $CFG['hostlist']['edit'] = true;
+$qry = 'Select * from homehost ORDER BY INET_ATON(host_ipv4)';
+
+$qry ="Select homehost.*, GRP.id AS GRPID, GRP.hostgroup from homehost INNER JOIN hostgroup AS GRP ON homehost.hostgroup = GRP.id ORDER BY INET_ATON(host_ipv4); ";
+
+$res = DB::query($qry);
+foreach($res as $entry){
+    $hid = $entry['id'];
+    $CFG['data']['localhosts'][$hid] = $entry;
 }
+
+
+
+//echo "<pre>" . print_r($res,true)."</pre>";
+
+$CFG['data']['hostlist'] = $res;
+
+$CFG['hostlist']['edit'] = false;
+GetSets();
+
 
 if(isset($_REQUEST['edit'])){
     if(isset($_REQUEST['id'])){
-        $host = $CFG['fullhostdata']['fullhosts'][$_REQUEST['id']];
+        $host = $CFG['data']['localhosts'][$_REQUEST['id']];
+        //print_r($host);
         $CFG['hostlist']['edit'] = true;
+        $smarty->assign('ehost',$host);
+        $smarty->assign('targetapi','apilh.php');
     }
 }
 
-$dumpdata = [];
+
 if(isset($_POST['save'])){
     $dumpdata = $_POST;
-    saveHost($_POST);
+    saveLocalHost($_POST);
     $refData = true;
 }
 
-if(isset($_POST['delete'])){
-    $dumpdata = $_POST;
-    $id = $_POST['id'];
-    DeleteFullhost($id);
-    $refData = true;
-}
+if($refData){
+    $qry ="Select homehost.*, GRP.id AS GRPID, GRP.hostgroup from homehost INNER JOIN hostgroup AS GRP ON homehost.hostgroup = GRP.id ORDER BY INET_ATON(host_ipv4); ";
 
-if ($refData){
-    GetHosts();
+    $res = DB::query($qry);
+    foreach($res as $entry){
+        $hid = $entry['id'];
+        $CFG['data']['localhosts'][$hid] = $entry;
+    }
     GetSets();
-    NewIcons();
-    GetIconSet();
-    GetFullHostDataset();
-
-
+    $CFG['data']['hostlist'] = $res;
 }
 
-$smarty->assign('targetapi','api.php');
 
 
-$smarty->assign('ehost',$host);
-$smarty->assign('upd',true);
-$smarty->assign("basedata",$CFG['basedata'] );
-$dump = "<pre>" . print_r([$dumpdata],true) . "</pre>";
+
+$template = "localnet.tpl";
+
+
+
+
+
+
+$dump = print_r($_SERVER,true);
 $filepath = $CFG['dir']['incdir'] . $file;
-$smarty->assign('sectiononly',$sectiononly);
-$smarty->assign('seccode',$SECCODE);
 $smarty->assign('dump',$dump);
 $smarty->assign('SET',$CFG['set']);
 $smarty->assign('CFG',$CFG);
-$smarty->assign('name', 'Ned');
 $smarty->display($template);
 
 

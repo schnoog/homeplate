@@ -11,11 +11,12 @@
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
 -->
+                        <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                         {if $CFG.session.loggedin}
-
+                            <li class="nav-item"><a class="nav-link" href="localnet.php">Localnet</a></li>
                             <li class="nav-item"><a class="nav-link" href="hosts.php">Hosts</a></li>
                                 <li class="nav-item"><a class="nav-link" href="settings.php">Settings</a></li>
-                                <li class="nav-item"><a class="nav-link" href="icons.php">Projects</a></li>
+
                                 <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                         {else}
                                 <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>

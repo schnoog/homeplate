@@ -18,7 +18,7 @@
         <link href="assets/css/select2.min.css" rel="stylesheet" />
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/select2.min.js"></script>        
-        
+         
     </head>
     <body id="page-top">
         <!-- Navigation-->

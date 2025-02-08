@@ -4,6 +4,7 @@
 function GetSets(){
     global $CFG;
     $Groups = DB::query('Select * from fullgroup ORDER by id ASC');
+    $LGroups = DB::query('Select * from hostgroup ORDER by id ASC');    
     $Tags = DB::query("Select * from tag ORDER by id ASC");
     $Icons = DB::query("Select * from icon ORDER by id ASC ");
 
@@ -19,12 +20,20 @@ function GetSets(){
         $CFG['set']['groupsbyid'][$Groups[$x]['id'] ] = $Groups[$x]['hostgroup'];
     }
 
+    for($x=0;$x < count($LGroups);$x++){
+        $CFG['set']['lgroupsbyid'][$LGroups[$x]['id'] ] = $Groups[$x]['hostgroup'];
+    }
+
     for($x=0;$x < count($Tags);$x++){
         $CFG['set']['tagsbyid'][$Tags[$x]['id'] ] = $Tags[$x]['tag'];
     }
 
     for($x=0;$x < count($Icons);$x++){
-        $CFG['set']['iconssbyid'][$Icons[$x]['id'] ] = $Icons[$x]['icon'];
+        $CFG['set']['iconsbyid'][$Icons[$x]['id'] ] = $Icons[$x]['icon'];
+    }
+
+    for($x=0;$x < count($Icons);$x++){
+        $CFG['set']['iconsImagebyid'][$Icons[$x]['id'] ] = '<img src="assets/img/icons/' .  $Icons[$x]['icon'] .'" height="60px" style="margin-right: 10px;">';
     }
 
 
